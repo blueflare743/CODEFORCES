@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <set>
+#include <map>
+#include <array>
+#include <string> 
+using namespace std;
+array<int,  4> matrix;
+void rotateMatrix(){
+  int zero = matrix[0];//1
+  int one = matrix[1];//3
+  int two = matrix[2];//5
+  int three = matrix[3];//7
+  matrix[1] = zero;//1157
+  matrix[3] = one;//1153
+  matrix[2] = three;//1173
+  matrix[0] = two;//5173
+}
+string isBeautiful(){
+  if( matrix[0] < matrix[1]  && matrix[2] < matrix[3] && matrix[0] < matrix[2] && matrix[1] < matrix[3]) return "YES";
+    else 
+    return "NO";
+}
+int main(){
+   int t; cin >> t;
+   string a;
+   for(int i = 0; i < t; i ++){
+     cin >> matrix[0];
+     cin >> matrix[1];
+     cin >> matrix[2];
+     cin >> matrix[3];
+     a = "NO";
+     for(int j = 0; j < 5; j++){
+       if  (a != "YES")
+       a = isBeautiful();
+       rotateMatrix();
+     //  cout << matrix[0] << matrix[1] << matrix[2] << matrix[3]<< endl;
+     }
+     cout << a << endl;
+   }
+    return 0;
+}
